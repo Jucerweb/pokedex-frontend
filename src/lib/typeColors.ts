@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react'
+
 export const TYPE_COLORS: Record<string, string> = {
   normal: '#9A9A9A',
   fire: '#E62829',
@@ -20,3 +22,24 @@ export const TYPE_COLORS: Record<string, string> = {
 }
 
 export const FALLBACK_TYPE_COLOR = '#9A9A9A'
+
+export function getTypeColor(type: string): string {
+  return TYPE_COLORS[type.toLowerCase()] ?? FALLBACK_TYPE_COLOR
+}
+
+export function getTypeGradient(types: string[]): string {
+  const primary = getTypeColor(types[0] ?? '')
+  if (types.length <= 1) {
+    return `linear-gradient(135deg, ${primary}, ${primary}cc)`
+  }
+  const secondary = getTypeColor(types[1])
+  return `linear-gradient(135deg, ${primary}, ${secondary})`
+}
+
+export function getTypeBorderColor(type: string): string {
+  return getTypeColor(type)
+}
+
+export function getTypeBackgroundStyle(types: string[]): CSSProperties {
+  return { background: getTypeGradient(types) }
+}

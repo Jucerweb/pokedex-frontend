@@ -1,3 +1,14 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { PokemonListPage } from '@/components/pages/PokemonListPage'
+import { PokemonDetailPage } from '@/components/pages/PokemonDetailPage'
+
 export function App() {
-  return <div><h1>pokedex-frontend</h1></div>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<PokemonListPage />} />
+        <Route path="/pokemon/:id" element={<PokemonDetailPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
