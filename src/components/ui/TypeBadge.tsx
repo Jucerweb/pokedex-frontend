@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { TYPE_COLORS, FALLBACK_TYPE_COLOR } from '@/lib/typeColors'
+import { getTypeColor } from '@/lib/typeColors'
 
 interface TypeBadgeProps {
   type: string
@@ -8,7 +8,7 @@ interface TypeBadgeProps {
 
 function TypeBadge({ type, className }: TypeBadgeProps) {
   const normalized = type.toLowerCase()
-  const backgroundColor = TYPE_COLORS[normalized] ?? FALLBACK_TYPE_COLOR
+  const backgroundColor = getTypeColor(normalized)
   const label = normalized.charAt(0).toUpperCase() + normalized.slice(1)
 
   return (

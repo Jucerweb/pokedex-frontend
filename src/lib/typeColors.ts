@@ -20,3 +20,7 @@ export const TYPE_COLORS: Record<string, string> = {
 }
 
 export const FALLBACK_TYPE_COLOR = '#9A9A9A'
+
+export function getTypeColor(type: string): string {
+  return TYPE_COLORS[type.toLowerCase()] ?? FALLBACK_TYPE_COLOR
+}
